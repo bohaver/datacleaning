@@ -40,8 +40,10 @@ colformat <- function(char){
 colnames(subdata) <- sapply(colnames(subdata), colformat)
 
 #Write subdata to file
-
+write.csv(subdata, 'MeansAndStandardDeviation.csv')
 
 #Create alternative data that is averagedfor each activity and subject
 datamelt <- melt(data, id=c('Subject', 'Activity'))
 avgdata <- dcast(datamelt, Subject+Activity ~ variable, mean)
+
+write.csv(avgdata, 'DataMelt.csv')
